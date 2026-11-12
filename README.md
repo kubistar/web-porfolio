@@ -1,6 +1,7 @@
-<p align="center">
-  <h1 align="center">Portfolio ✨</h1>
+# Portfolio
 
-  <p align="center">
-포트폴리오 입니다. <br/>Github 페이지로 호스팅 됩니다. <br/>웹 사이트는 <a href="https://kubistar.github.io/web-porfolio/#">PORTFOLIO</a>에서 확인하실 수 있습니다.
-  <br/>
+백엔드 개발자 유승미의 포트폴리오입니다. 프로젝트별 문제 해결 과정(문제 → 원인 → 해결 → 결과)을 중심으로 정리했습니다.
+
+https://kubistar.github.io/web-porfolio/
+
+정적 HTML 한 파일(`index.html`)로 구성되어 있으며, `main` 브랜치에 푸시하면 GitHub Pages로 배포됩니다.

@@ -1,843 +1,485 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="ko">
 <head>
-	<title>백엔드개발자 유승미</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>유승미 | Backend Developer</title>
+<meta name="description" content="장애를 재현하고 수치로 개선을 확인하는 백엔드 개발자 유승미의 포트폴리오">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#f6f7f9; --text:#16181d; --text-2:#4a505c; --text-3:#7a808c;
+  --line:#e4e7ec; --accent:#2f5bd8; --accent-soft:#eaf0ff; --good:#127a4a; --good-soft:#e7f6ee;
+  --bad:#b4372c; --code:#eef0f4;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#111317; --bg-soft:#181b21; --text:#eceef2; --text-2:#b3b8c3; --text-3:#858b97;
+    --line:#2a2e36; --accent:#7f9eff; --accent-soft:#1c2540; --good:#5fd39a; --good-soft:#15291f;
+    --bad:#ff8a7d; --code:#22262e;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+body{margin:0; background:var(--bg); color:var(--text);
+  font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.7; word-break:keep-all; -webkit-font-smoothing:antialiased}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em; background:var(--code); padding:.1em .35em; border-radius:4px}
+.wrap{max-width:880px; margin:0 auto; padding:0 20px}
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+/* nav */
+nav{position:sticky; top:0; z-index:10; background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid var(--line)}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px}
+nav .brand{font-weight:700; color:var(--text)}
+nav ul{display:flex; gap:20px; list-style:none; margin:0; padding:0; font-size:15px}
+nav ul a{color:var(--text-2)}
+@media (max-width:560px){ nav ul{gap:14px; font-size:14px} nav .brand{display:none} }
 
-	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="css/animate.css">
+/* hero */
+header.hero{padding:72px 0 40px}
+.eyebrow{color:var(--accent); font-weight:600; font-size:15px; letter-spacing:.02em}
+h1{font-size:clamp(28px,5vw,40px); line-height:1.3; margin:8px 0 20px; letter-spacing:-.02em}
+.lead{color:var(--text-2); font-size:17px; max-width:720px; margin:0}
+.links{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px}
+.btn{display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border:1px solid var(--line);
+  border-radius:8px; color:var(--text); font-size:15px; font-weight:500}
+.btn:hover{border-color:var(--accent); text-decoration:none}
 
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
+/* metrics */
+.metrics{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:40px}
+.metric{background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; padding:16px}
+.metric .num{font-size:20px; font-weight:700; letter-spacing:-.01em; white-space:nowrap}
+.metric .num .from{color:var(--text-3); font-weight:500}
+.metric .num .to{color:var(--good)}
+.metric .desc{font-size:13.5px; color:var(--text-2); margin-top:4px; line-height:1.5}
+@media (max-width:760px){ .metrics{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:400px){ .metric .num{font-size:18px} }
 
-	<link rel="stylesheet" href="css/aos.css">
+/* sections */
+section{padding:56px 0; border-top:1px solid var(--line)}
+h2{font-size:26px; margin:0 0 8px; letter-spacing:-.01em}
+.section-desc{color:var(--text-2); margin:0 0 32px}
 
-	<link rel="stylesheet" href="css/ionicons.min.css">
+/* project */
+.project{margin-bottom:72px}
+.project:last-child{margin-bottom:0}
+.project-head h3{font-size:22px; margin:0 0 4px; letter-spacing:-.01em}
+.project-head .sub{color:var(--text-2); margin:0 0 16px}
+.meta{display:grid; grid-template-columns:88px 1fr; gap:6px 12px; font-size:15px; margin:0 0 20px;
+  padding:16px; background:var(--bg-soft); border-radius:12px; border:1px solid var(--line)}
+.meta dt{color:var(--text-3); font-weight:500}
+.meta dd{margin:0}
+.tags{display:flex; flex-wrap:wrap; gap:6px}
+.tag{font-size:13px; padding:2px 8px; border-radius:6px; background:var(--code); color:var(--text-2)}
 
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/style.css">
+h4{font-size:17px; margin:32px 0 12px}
+.phase{display:inline-block; font-size:12px; font-weight:600; padding:1px 8px; border-radius:999px;
+  background:var(--accent-soft); color:var(--accent); margin-right:6px; vertical-align:2px}
+
+/* architecture */
+.arch{border:1px solid var(--line); border-radius:12px; padding:16px; display:grid; gap:14px}
+.flow{display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:14px}
+.flow .label{width:100%; font-size:13px; color:var(--text-3); font-weight:600}
+.node{padding:4px 10px; border-radius:6px; background:var(--bg-soft); border:1px solid var(--line); white-space:nowrap}
+.arrow{color:var(--text-3)}
+
+/* case (trouble shooting) */
+.case{border:1px solid var(--line); border-radius:12px; margin-bottom:14px; overflow:hidden}
+.case summary{list-style:none; cursor:pointer; padding:16px 18px; display:flex; gap:12px; align-items:flex-start}
+.case summary::-webkit-details-marker{display:none}
+.case summary .t{flex:1; font-weight:600; line-height:1.5}
+.case summary .r{font-size:13.5px; font-weight:600; color:var(--good); background:var(--good-soft);
+  padding:2px 8px; border-radius:6px; white-space:nowrap}
+.case summary::after{content:"+"; color:var(--text-3); font-weight:400; font-size:20px; line-height:1.2}
+.case[open] summary::after{content:"−"}
+.case summary:hover{background:var(--bg-soft)}
+.case .body{padding:4px 18px 18px; display:grid; grid-template-columns:52px 1fr; gap:10px 14px}
+.case .body dt{font-size:13px; font-weight:700; color:var(--text-3); padding-top:2px}
+.case .body dt.res{color:var(--good)}
+.case .body dd{margin:0; color:var(--text-2)}
+.case .body dd ul{margin:0; padding-left:18px}
+@media (max-width:560px){
+  .case summary{flex-wrap:wrap}
+  .case summary .r{order:3; margin-left:0}
+  .case .body{grid-template-columns:1fr; gap:2px}
+  .case .body dd{margin-bottom:10px}
+}
+
+/* compact list */
+.compact{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+.compact li{padding-left:16px; position:relative; color:var(--text-2)}
+.compact li::before{content:""; position:absolute; left:2px; top:.72em; width:5px; height:5px; border-radius:50%; background:var(--text-3)}
+.compact b{color:var(--text); font-weight:600}
+
+/* skills */
+.skills{display:grid; grid-template-columns:140px 1fr; gap:14px 20px; margin:0}
+.skills dt{font-weight:600; padding-top:2px}
+.skills dd{margin:0}
+@media (max-width:560px){ .skills{grid-template-columns:1fr; gap:4px} .skills dd{margin-bottom:12px} }
+
+/* timeline */
+.timeline{list-style:none; margin:0; padding:0}
+.timeline li{display:grid; grid-template-columns:150px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--line)}
+.timeline li:last-child{border-bottom:0}
+.timeline .when{color:var(--text-3); font-size:15px; font-variant-numeric:tabular-nums}
+.timeline .what b{display:block}
+.timeline .what span{color:var(--text-2); font-size:15px}
+@media (max-width:560px){ .timeline li{grid-template-columns:1fr; gap:2px} }
+
+footer{padding:40px 0 56px; border-top:1px solid var(--line); color:var(--text-3); font-size:14px}
+</style>
 </head>
+<body>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">유승미</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Backend Developer · 유승미</div>
+    <h1>장애를 직접 재현하고,<br>수치로 확인하는 백엔드 개발자</h1>
+    <p class="lead">
+      로컬에서 동작하는 코드와 운영에서 동작하는 코드는 다르다는 것을 프로젝트에서 배웠습니다.
+      실제 EKS와 온프렘 Kubernetes 환경에서 부하 테스트와 장애 재현으로 병목을 좁혀 해결해 왔고,
+      Spring Batch 기반 정산·통계 시스템을 만든 경험이 있어 대용량 집계와 배치 처리에 강점이 있습니다.
+    </p>
+    <div class="links">
+      <a class="btn" href="https://github.com/kubistar" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="mailto:seungmi6301@naver.com">seungmi6301@naver.com</a>
+    </div>
 
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index.html"><span>Y</span>ooseungmi</a>
-			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
-				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
+    <div class="metrics">
+      <div class="metric">
+        <div class="num"><span class="from">2.9s</span> → <span class="to">46ms</span></div>
+        <div class="desc">캐시 장애 시 DB 쏠림 해소<br>p99 응답 시간 (초당 400건)</div>
+      </div>
+      <div class="metric">
+        <div class="num"><span class="from">19s</span> → <span class="to">~1s</span></div>
+        <div class="desc">Redis 중단 시<br>리다이렉트 응답 시간</div>
+      </div>
+      <div class="metric">
+        <div class="num"><span class="from">30.8%</span> → <span class="to">0</span></div>
+        <div class="desc">초당 800건 급증 시<br>클릭 이벤트 유실률</div>
+      </div>
+      <div class="metric">
+        <div class="num"><span class="from">538ms</span> → <span class="to">52ms</span></div>
+        <div class="desc">배포 직후 급증 구간<br>p95 응답 시간 (초당 800건)</div>
+      </div>
+    </div>
+  </div>
+</header>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-					<li class="nav-item"><a href="#education-section" class="nav-link"><span>Education</span></a></li>
-					<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
-					<li class="nav-item"><a href="#side-projects-section" class="nav-link"><span>Side
-								Projects</span></a>
-					</li>
-					<li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
-					<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<section class="hero-wrap js-fullheight">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
-				<div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center">
-					<div class="text text-center">
-						<span class="subheading">Hey! I am</span>
-						<h1>유승미</h1>
-						<h2>I'm a
-							<span class="txt-rotate" data-period="500"
-								data-rotate='["백엔드 개발자", "웹 개발자","android 개발자", "신입 개발자"]'></span>
-						</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-		<div class="mouse">
-			<a href="#" class="mouse-icon">
-				<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
-			</a>
-		</div>
-	</section>
+<main>
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="section-desc">각 항목을 펼치면 문제 → 원인 → 해결 → 결과 순서로 볼 수 있습니다.</p>
 
-	<section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
-		<div class="container">
-			<div class="row d-flex no-gutters">
-				<div class="col-md-6 col-lg-6 d-flex">
-					<div class="img-about img d-flex align-items-stretch">
-						<div class="overlay"></div>
-						<div class="img d-flex align-self-stretch align-items-center"
-							style="background-image:url(images/picture.jpg);">
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 pl-md-5 py-5">
-					<div class="row justify-content-start pb-3">
-						<div class="col-md-12 heading-section ftco-animate">
-							<h1 class="big">About</h1>
-							<h2 class="mb-4">About Me</h2>
-							<p>저는 항상 새로운 기술을 배우고 이를 실제 프로젝트에 적용하는 것을 즐기는 개발자입니다.</p>
-							<ul class="about-info mt-4 px-md-0 px-2">
-								<li class="d-flex"><span>Name:</span> <span>유승미</span></li>
-								<li class="d-flex"><span>Address:</span> <span>강남구 역삼동</span></li>
-								<li class="d-flex"><span>Email:</span> <span>seungmi6301@naver.com</span></li>
-								<li class="d-flex"><span>Phone: </span> <span>+82-010-2076-6301</span></li>
-							</ul>
-						</div>
-					</div>
-					<div class="counter-wrap ftco-animate d-flex mt-md-3">
-						<div class="text">
-							<p class="mb-4">
-								<span class="number" data-number="4">0</span>
-								<span>Project complete</span>
-							</p>
-							<p><a target="_blank"
-									href="https://drive.google.com/file/d/1xXitb2P-WUgJ1hK0zGEtGldrTbhJ5_PD/view?usp=sharing"
-									class="btn btn-primary py-3 px-3">이력서 다운받기</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <!-- ───────────── snipy ───────────── -->
+    <article class="project">
+      <div class="project-head">
+        <h3>snipy — URL 단축 서비스</h3>
+        <p class="sub">단축 URL 생성·리다이렉트와 클릭 통계를 제공하는 마이크로서비스. AWS EKS에 구축한 뒤, 비용 절감을 위해 VM 기반 Kubernetes에도 같은 서비스를 배포하는 하이브리드 구조로 확장했습니다.</p>
+      </div>
+      <dl class="meta">
+        <dt>기간</dt><dd>2026.08 (EKS) · 2026.10 ~ 2026.11 (하이브리드 확장)</dd>
+        <dt>인원</dt><dd>4인 · 멋쟁이사자처럼 DevOps 7기</dd>
+        <dt>담당</dt><dd>통계 API, 클릭 분석 파이프라인, CI/CD → 백엔드 마일스톤, 온프렘 분석 파이프라인·배포</dd>
+        <dt>기술</dt><dd class="tags">
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">MySQL</span><span class="tag">Redis</span>
+          <span class="tag">AWS EKS</span><span class="tag">Firehose</span><span class="tag">S3</span><span class="tag">Athena</span><span class="tag">CloudFront</span>
+          <span class="tag">Kubernetes(VM)</span><span class="tag">Fluent Bit</span><span class="tag">SeaweedFS</span><span class="tag">DuckDB</span>
+          <span class="tag">Kustomize</span><span class="tag">ArgoCD</span><span class="tag">GitHub Actions</span><span class="tag">k6</span>
+        </dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/Team-likelion-3rd-Project/likelion-devops-7th-3rd-team03" target="_blank" rel="noopener">Team-likelion-3rd-Project/likelion-devops-7th-3rd-team03 ↗</a></dd>
+      </dl>
 
-	<!--<section class="ftco-section ftco-no-pb ftco-counter img" id="section-counter">
-		<div class="container-fluid px-md-5">
-			<div class="row d-md-flex align-items-center">
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 shadow">
-						<div class="text">
-							<strong class="number" data-number="365">0</strong>
-							<span>코딩한 일수</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 shadow">
-						<div class="text">
-							<strong class="number" data-number="100">0</strong>
-							<span>Complete Projects</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 shadow">
-						<div class="text">
-							<strong class="number" data-number="100">0</strong>
-							<span>Happy Customers</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 shadow">
-						<div class="text">
-							<strong class="number" data-number="50">0</strong>
-							<span>Cups of coffee</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>-->
+      <h4>클릭 분석 파이프라인</h4>
+      <div class="arch">
+        <div class="flow">
+          <span class="label">AWS</span>
+          <span class="node">redirect-service</span><span class="arrow">→</span>
+          <span class="node">Firehose</span><span class="arrow">→</span>
+          <span class="node">S3</span><span class="arrow">→</span>
+          <span class="node">Athena</span><span class="arrow">→</span>
+          <span class="node">MySQL 집계</span>
+        </div>
+        <div class="flow">
+          <span class="label">온프렘 (VM Kubernetes)</span>
+          <span class="node">redirect-service</span><span class="arrow">→</span>
+          <span class="node">Fluent Bit 사이드카</span><span class="arrow">→</span>
+          <span class="node">SeaweedFS</span><span class="arrow">→</span>
+          <span class="node">DuckDB 배치</span><span class="arrow">→</span>
+          <span class="node">MySQL 집계</span>
+        </div>
+        <div class="flow">
+          <span class="label">실시간 통계</span>
+          <span class="node">Redis INCR (클릭 수)</span>
+          <span class="node">HyperLogLog (순 방문자)</span>
+          <span class="node">KST 기준 · TTL 3일</span>
+        </div>
+      </div>
 
+      <h4>문제 해결</h4>
 
-	<section class="ftco-section ftco-no-pb goto-here" id="resume-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<nav id="navi">
-						<ul>
-							<li><a href="#page-1">Education</a></li>
-							<!--<li><a href="#page-2">Experience</a></li>-->
-							<li><a href="#page-3">Skills</a></li>
-							<li><a href="#page-4">Projects</a></li>
-						</ul>
-					</nav>
-				</div>
-				<div class="col-md-9" id="education-section">
-					<div id="page-1" class="page one">
-						<h2 class="heading">Education</h2>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2017-2021</span>
-								<h2>스마트IT 전공</h2>
-								<span class="position">Daegu Haany University</span>
-								<p> </p>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2021.11-2022.05</span>
-								<h2>AI 데이터플랫폼을 활용한 빅데이터분석전문가 과정</h2>
-								<span class="position">휴먼 교육센터</span>
-								<p></p>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2023.02-2023.08</span>
-								<h2>프론트엔드UI구현 및 백엔드 개발을위한 풀스택 인재양성</h2>
-								<span class="position">한국소프트웨어인재개발원(KOSMO)</span>
-								<p></p>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2024.05 ~ 2024.08</span>
-								<h2>취업리부트코스3기</h2>
-								<span class="position">항해</span>
-								<p></p>
-							</div>
-						</div>
-					</div>
+      <details class="case" open>
+        <summary><span class="t"><span class="phase">하이브리드</span>캐시 조회 오류가 같은 링크 조회를 DB로 몰리게 함</span><span class="r">p99 2.9s → 46ms</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>초당 400건 부하에서 캐시 조회 오류 2,248회, DB 커넥션 대기 최대 163개, p99 응답 시간 2.9초</dd>
+          <dt>원인</dt><dd>CPU 제한(throttling)에 걸린 파드에서 Redis 타임아웃이 발생하고, 캐시를 놓친 같은 링크 조회가 동시에 DB로 몰림</dd>
+          <dt>해결</dt><dd>같은 키에 대한 동시 조회 요청을 하나로 묶어 DB에는 한 번만 조회하도록 변경</dd>
+          <dt class="res">결과</dt><dd>DB 커넥션 대기 0건, p99 응답 시간 <b>2.9초 → 46ms</b></dd>
+        </dl>
+      </details>
 
-					<!-- 경력  -->
-					<!--<div id="page-2" class="page two">
-						<h2 class="heading">Work Experience</h2>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2019.09-2021.04(1년 8개월)</span>
-								<h2>Full Stack Developer</h2>
-								<span class="position">주식회사 더라피스</span>
-								<p>동남아 스파 예약 서비스 Web 개발, 온라인 요가 수업 예약/결제 서비스 개발<br /></p>
-								<b class="text-primary">기술 스택</b>
-								<p>ReactJS, Next.js,Typescript, Styled-components, AWS S3 static hosting</p>
-								<b class="text-primary">주요 업무 </b>
-								<div>
-									<div> - React + typescript 기반 웹 서비스 개발/운영</div>
-									<div> - 디자인 시스템 도입을 위한 UI 컴포넌트 관리용 storybook 도입</div>
-									<div> - SEO를 위한 Next.js 도입</div>
-									<div> - Serverless 환경을 위한 s3 기반의 static hosting 구축</div>
-								</div>
-								</p>
-							</div>
+      <details class="case">
+        <summary><span class="t"><span class="phase">하이브리드</span>Redis가 멈추면 리다이렉트가 최대 19초 지연</span><span class="r">19s → ~1s</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>Redis 중단 시 리다이렉트 응답이 최대 19초까지 지연. 캐시 실패 시 DB로 우회하는 경로가 있는데도 동작하지 않음</dd>
+          <dt>원인</dt><dd>Redis 장애를 직접 재현해 확인한 결과, 클라이언트 기본 명령 타임아웃(60초)이 길어 DB 우회 경로로 넘어가지 못하고 있었음</dd>
+          <dt>해결</dt><dd>Redis 명령 타임아웃을 500ms로 조정해 빠르게 실패하고 DB 경로로 넘어가도록 변경</dd>
+          <dt class="res">결과</dt><dd>Redis 장애 상황에서도 응답 시간 <b>약 1초</b>로 서비스 유지</dd>
+        </dl>
+      </details>
 
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2014-2015</span>
-								<h2>Web Designer</h2>
-								<span class="position">Cambridge University</span>
-								<p>A small river named Duden flows by their place and supplies it with the necessary
-									regelialia. It is a paradisematic country, in which roasted parts of sentences
-									fly
-									into your mouth.</p>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2014-2015</span>
-								<h2>Web Marketing</h2>
-								<span class="position">Cambridge University</span>
-								<p>A small river named Duden flows by their place and supplies it with the necessary
-									regelialia. It is a paradisematic country, in which roasted parts of sentences
-									fly
-									into your mouth.</p>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2014-2015</span>
-								<h2>Art &amp; Creative Director</h2>
-								<span class="position">Side Tech</span>
-								<p>A small river named Duden flows by their place and supplies it with the necessary
-									regelialia. It is a paradisematic country, in which roasted parts of sentences
-									fly
-									into your mouth.</p>
-							</div>
-						</div>
-					</div>-->
-					<div id="page-3" class="page three">
-						<h2 class="heading">Skills</h2>
-						<div class="row progress-circle mb-5">
-							<div class="col-lg-4 mb-4">
-								<div class="bg-white rounded-lg shadow p-4">
-									<h2 class="h5 font-weight-bold text-center mb-4">Java</h2>
+      <details class="case">
+        <summary><span class="t"><span class="phase">하이브리드</span>트래픽 급증 시 클릭 이벤트 30.8% 유실</span><span class="r">유실 69,901건 → 0건</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>운영 환경 초당 800건 급증 테스트에서 클릭 이벤트 30.8%(69,901건)가 유실. 통계가 조용히 틀어지는 문제라 지표 없이는 알기 어려움</dd>
+          <dt>원인</dt><dd>앱 내부 전송 큐가 가득 차 이벤트를 버리고 있었음</dd>
+          <dt>해결</dt><dd>Firehose로 이벤트를 배치 전송하도록 바꾸고, 유실 건수 지표를 추가해 유실을 관측 가능하게 만듦</dd>
+          <dt class="res">결과</dt><dd>227,999건 <b>전량 적재, 유실 0건</b></dd>
+        </dl>
+      </details>
 
-									<!-- Progress bar 1 -->
-									<div class="progress mx-auto" data-value='90'>
-										<span class="progress-left">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<span class="progress-right">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<div
-											class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-											<div class="h2 font-weight-bold">90<sup class="small">%</sup></div>
-										</div>
-									</div>
-									<!-- END -->
+      <details class="case">
+        <summary><span class="t"><span class="phase">하이브리드</span>배포 직후 트래픽 급증 시 지연 집중</span><span class="r">p95 538ms → 52ms</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>배포 직후 초당 800건이 몰리면 p95 538ms, p99 약 1.75초, 처리하지 못한 요청 815건 발생</dd>
+          <dt>원인</dt><dd>애플리케이션 워밍업이 클릭 이벤트 전송 경로를 거치지 않아, 첫 실제 요청들이 초기화 비용을 떠안음</dd>
+          <dt>해결</dt><dd>워밍업 범위를 클릭 이벤트 경로까지 확장</dd>
+          <dt class="res">결과</dt><dd>p95 <b>538ms → 52ms</b>, p99 <b>약 1.75초 → 약 152ms</b>, 미처리 요청 <b>815건 → 0건</b></dd>
+        </dl>
+      </details>
 
-									<!-- Demo info -->
-									<div class="row text-center mt-4">
-										<div class="col-6 border-right">
-											<div class="h4 font-weight-bold mb-0">28%</div><span
-												class="small text-gray">Last week</span>
-										</div>
-										<div class="col-6">
-											<div class="h4 font-weight-bold mb-0">60%</div><span
-												class="small text-gray">Last month</span>
-										</div>
-									</div>
-									<!-- END -->
-								</div>
-							</div>
+      <details class="case">
+        <summary><span class="t"><span class="phase">EKS</span>클릭 통계 배치 UPSERT 중 OutOfMemoryError</span><span class="r">OOM 해소 · 불량 행만 격리</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>클릭 통계 배치 UPSERT 중 OutOfMemoryError 발생. 또한 일부 불량 행 하나가 배치 전체 실패로 번짐</dd>
+          <dt>원인</dt><dd>대량 데이터를 하나의 INSERT 문자열로 한 번에 생성해 메모리를 초과</dd>
+          <dt>해결</dt><dd><ul>
+            <li>1,000행 단위 청크 분할과 청크 단위 트랜잭션</li>
+            <li>지수 백오프 재시도와 서킷 브레이커 적용</li>
+            <li>실패한 청크는 재귀 이분 탐색으로 불량 행만 찾아내 dead-letter 로그로 분리</li>
+          </ul></dd>
+          <dt class="res">결과</dt><dd>OOM 해소, 불량 행이 있어도 <b>나머지 데이터는 정상 적재</b></dd>
+        </dl>
+      </details>
 
-							<div class="col-lg-4 mb-4">
-								<div class="bg-white rounded-lg shadow p-4">
-									<h2 class="h5 font-weight-bold text-center mb-4">JavaScript</h2>
+      <details class="case">
+        <summary><span class="t"><span class="phase">EKS</span>통계의 지역·기기 값이 모두 UNKNOWN으로 집계</span><span class="r">원인 규명 · 대체 산출</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>클릭 통계의 지역·기기 값이 UNKNOWN으로 집계</dd>
+          <dt>원인</dt><dd>요청 경로를 추적한 결과 CloudFront가 클라이언트 헤더를 오리진으로 전달하지 않고 있었음</dd>
+          <dt>해결</dt><dd>언어 헤더(Accept-Language)의 국가 서브태그로 지역을 대체 산출</dd>
+        </dl>
+      </details>
 
-									<!-- Progress bar 1 -->
-									<div class="progress mx-auto" data-value='80'>
-										<span class="progress-left">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<span class="progress-right">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<div
-											class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-											<div class="h2 font-weight-bold">80<sup class="small">%</sup></div>
-										</div>
-									</div>
-									<!-- END -->
+      <details class="case">
+        <summary><span class="t"><span class="phase">EKS</span>로컬에선 되던 파이프라인이 실제 클러스터에서 실패</span><span class="r">결함 5건 수정</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>로컬에서 동작하던 클릭 분석 파이프라인이 실제 EKS 클러스터에서 동작하지 않음</dd>
+          <dt>원인</dt><dd>파이프라인을 끝까지 돌려 보며 ConfigMap 하드코딩, 환경 변수 누락, IAM 권한 누락, Athena 쿼리 컨텍스트 누락 등 결함 5건 발견</dd>
+          <dt>해결</dt><dd>Kustomize overlay를 환경별로 분리하는 등 설정과 권한을 정리</dd>
+          <dt class="res">결과</dt><dd>redirect-service → Firehose → S3 → Athena → MySQL 전 구간 운영 환경에서 동작</dd>
+        </dl>
+      </details>
 
-									<!-- Demo info -->
-									<div class="row text-center mt-4">
-										<div class="col-6 border-right">
-											<div class="h4 font-weight-bold mb-0">28%</div><span
-												class="small text-gray">Last week</span>
-										</div>
-										<div class="col-6">
-											<div class="h4 font-weight-bold mb-0">60%</div><span
-												class="small text-gray">Last month</span>
-										</div>
-									</div>
-									<!-- END -->
-								</div>
-							</div>
+      <details class="case">
+        <summary><span class="t"><span class="phase">EKS</span>800tps 부하 테스트 지연 (팀 공동 분석)</span><span class="r">성공률 100%</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>k6 부하 테스트(800tps)에서 지연 발생</dd>
+          <dt>원인</dt><dd>팀과 함께 RDS 버퍼 풀 → JVM 힙 자동 설정 → 콜드 스타트 CPU throttling 3단계로 원인을 좁힘</dd>
+          <dt>해결</dt><dd>단계별 원인에 맞춰 설정 조정</dd>
+          <dt class="res">결과</dt><dd>800tps에서 <b>성공률 100%</b></dd>
+        </dl>
+      </details>
 
-							<div class="col-lg-4 mb-4">
-								<div class="bg-white rounded-lg shadow p-4">
-									<h2 class="h5 font-weight-bold text-center mb-4">Spring</h2>
+      <details class="case">
+        <summary><span class="t"><span class="phase">하이브리드</span>AWS 전용 분석 경로가 온프렘에서 동작하지 않음</span><span class="r">양쪽 환경 동일 집계</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>Firehose → S3 → Athena 분석 경로는 AWS 전용이라 온프렘 클러스터에서 사용할 수 없음</dd>
+          <dt>해결</dt><dd>수집·저장·쿼리 계층을 추상화하고 온프렘에서는 Fluent Bit + SeaweedFS + DuckDB로 대체. 매니페스트를 VM 클러스터에서 직접 검증한 뒤 Kustomize 공용 컴포넌트로 정리해 팀에 공유</dd>
+          <dt class="res">결과</dt><dd>AWS와 온프렘 양쪽에서 같은 방식으로 통계 집계</dd>
+        </dl>
+      </details>
 
-									<!-- Progress bar 1 -->
-									<div class="progress mx-auto" data-value='75'>
-										<span class="progress-left">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<span class="progress-right">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<div
-											class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-											<div class="h2 font-weight-bold">75<sup class="small">%</sup></div>
-										</div>
-									</div>
-									<!-- END -->
+      <h4>그 외 구현 · 검증</h4>
+      <ul class="compact">
+        <li><b>무중단 배포 검증</b> — 롤링 배포 중 파드 교체를 3회 측정, 3회 모두 요청 실패 0건(0/900)·클릭 유실 0건(901 → 901) 확인 후 측정 방법 문서화</li>
+        <li><b>빠른 실패</b> — 소셜 로그인 API와 Firehose 전송에 빠른 실패 적용, 응답 코드를 400에서 504로 구분. NetworkPolicy로 외부 연결을 차단해 장애를 재현하고 2초 이내 504 반환 검증</li>
+        <li><b>통계 정확도</b> — 봇·링크 프리뷰 요청을 <code>is_bot</code>으로 걸러내고, <code>event_id</code> 기준 중복 제거로 클릭 중복 집계 방지</li>
+        <li><b>실시간 통계 API</b> — Redis INCR·HyperLogLog 키를 KST 기준·3일 TTL로 설계해 일별 변화·분류별·실시간 통계 제공</li>
+        <li><b>수집 경로 단순화</b> — Kinesis Stream에서 Firehose Direct PUT으로 전환해 구성 요소 축소</li>
+        <li><b>CI/CD</b> — GitHub Actions → ECR → Kustomize 이미지 태그 갱신 → ArgoCD 배포 (OIDC 인증, 멀티 스테이지 Dockerfile), 온프렘용 GHCR 빌드 CI</li>
+        <li><b>협업</b> — 팀원 PR 리뷰(Terraform·Kustomize 모듈화, HikariCP 풀 튜닝 등), 로컬 테스트용 MySQL·Redis 시드 스크립트 작성</li>
+      </ul>
+    </article>
 
-									<!-- Demo info -->
-									<div class="row text-center mt-4">
-										<div class="col-6 border-right">
-											<div class="h4 font-weight-bold mb-0">28%</div><span
-												class="small text-gray">Last week</span>
-										</div>
-										<div class="col-6">
-											<div class="h4 font-weight-bold mb-0">60%</div><span
-												class="small text-gray">Last month</span>
-										</div>
-									</div>
-									<!-- END -->
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>JSP</h3>
-									<div class="progress">
-										<div class="progress-bar color-1" role="progressbar" aria-valuenow="90"
-											aria-valuemin="0" aria-valuemax="100" style="width:90%">
-											<span>90%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>jQuery</h3>
-									<div class="progress">
-										<div class="progress-bar color-2" role="progressbar" aria-valuenow="85"
-											aria-valuemin="0" aria-valuemax="100" style="width:85%">
-											<span>85%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>HTML5</h3>
-									<div class="progress">
-										<div class="progress-bar color-3" role="progressbar" aria-valuenow="95"
-											aria-valuemin="0" aria-valuemax="100" style="width:95%">
-											<span>95%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>MariaDB</h3>
-									<div class="progress">
-										<div class="progress-bar color-4" role="progressbar" aria-valuenow="90"
-											aria-valuemin="0" aria-valuemax="100" style="width:90%">
-											<span>90%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>SpringBoot</h3>
-									<div class="progress">
-										<div class="progress-bar color-5" role="progressbar" aria-valuenow="70"
-											aria-valuemin="0" aria-valuemax="100" style="width:70%">
-											<span>70%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>Git</h3>
-									<div class="progress">
-										<div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
-											aria-valuemin="0" aria-valuemax="100" style="width:80%">
-											<span>80%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="page-4" class="page four">
-						<h2 id="projects-section" class="heading">Projects</h2>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2024.06-2024.07</span>
-								<div class="d-flex">
-									<h2>정산시스템</h2>
-									<div>&nbsp;<a class="btn btn-outline-secondary" target="_blank"
-											class="btn btn-outline-secondary"
-											href="https://github.com">Github</a>&nbsp;
-									</div>
-								</div>
-								<!--<span class="position">주식회사 더라피스</span>-->
-								<div> <b class="text-dark">기술 스택 : </b>Springboot,SpringSecurity, SpringBatch, Docker,
-									 Mysql, JPA
-								</div>
-								<div> <b class="text-dark">주요 기능 : </b> 👤 회원 가입,  🔐 로그인, 🚪 로그아웃
-									📹 동영상 관리: 등록, 재생, 정지 , 📊 동영상 통계 조회: 일간/주간/월간 Top 5 (조회수, 재생시간)
-									, 💰 동영상 정산 조회: 일간/주간/월간 조회 </div>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2023.06-2023.08</span>
-								<div class="d-flex">
-									<h2>TRPG 플랫폼 (굴림)</h2>
-									<div>&nbsp;<a class="btn btn-outline-secondary" target="_blank"
-												  class="btn btn-outline-secondary"
-												  href="https://github.com/soran12312/gulim_project">Github</a>&nbsp;<a
-											class="btn btn-outline-secondary" target="_blank"
-											href="images/gulim.jpg">스크린샷</a>&nbsp;<a
-											class="btn btn-outline-secondary" target="_blank"
-											href="https://www.youtube.com/watch?v=UfXdXP5gi3Y">시연영상</a>
-									</div>
+    <!-- ───────────── ticketing ───────────── -->
+    <article class="project">
+      <div class="project-head">
+        <h3>선착순 좌석 예매 티켓팅 서비스</h3>
+        <p class="sub">다수의 사용자가 동시에 같은 좌석을 예약하는 상황을 가정한 콘서트 티켓팅 서비스</p>
+      </div>
+      <dl class="meta">
+        <dt>기간</dt><dd>2025.05 ~ 2025.07</dd>
+        <dt>인원</dt><dd>1인 · 항해 Lite 백엔드 1기</dd>
+        <dt>기술</dt><dd class="tags">
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">JPA</span>
+          <span class="tag">Redis</span><span class="tag">MySQL</span><span class="tag">JUnit</span>
+        </dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/kubistar/server-java" target="_blank" rel="noopener">kubistar/server-java ↗</a></dd>
+      </dl>
 
-								</div>
+      <h4>문제 해결</h4>
+      <details class="case" open>
+        <summary><span class="t">같은 좌석에 동시 요청이 들어와 중복 예약 발생</span><span class="r">중복 예약 방지</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>같은 좌석에 예약 요청이 동시에 들어오면 둘 다 성공해 중복 예약 발생</dd>
+          <dt>해결</dt><dd>Redis <code>SETNX</code> 기반 좌석 락과 TTL로 락을 획득한 요청만 처리. TTL로 락이 영구히 남는 상황 방지</dd>
+          <dt class="res">결과</dt><dd>동시 요청 중 하나만 예약 성공</dd>
+        </dl>
+      </details>
+      <details class="case">
+        <summary><span class="t">결제하지 않은 좌석이 계속 점유됨</span><span class="r">미결제 좌석 자동 반환</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>예약만 하고 결제하지 않은 좌석이 다른 사용자에게 계속 막혀 있음</dd>
+          <dt>해결</dt><dd>좌석 상태를 <code>AVAILABLE</code> / <code>TEMPORARILY_ASSIGNED</code> / <code>RESERVED</code> 3단계로 나누고 임시 배정에 5분 만료 적용</dd>
+          <dt class="res">결과</dt><dd>미결제 좌석이 만료 후 다시 예약 가능 상태로 전환</dd>
+        </dl>
+      </details>
+      <details class="case">
+        <summary><span class="t">예약 확정과 잔액 차감 중 일부만 처리됨</span><span class="r">데이터 정합성 보장</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>예약 확정과 잔액 차감 중 하나만 반영되어 데이터가 어긋날 수 있음</dd>
+          <dt>해결</dt><dd>예약 확정·잔액 차감·결제 이력 생성을 하나의 트랜잭션으로 묶음</dd>
+          <dt class="res">결과</dt><dd>중간 실패 시 전체 롤백되어 부분 반영 없음</dd>
+        </dl>
+      </details>
 
-								<!--<span class="position">Cambridge University</span>-->
-								<div> <b class="text-dark">기술 스택 : </b>Spring Boot, Java, JavaScript, React, Python
-									, Tomcat, Node.js, Express, MariaDB, WebRTC, Peer.js, Pandas, Scikit-learn
-								</div>
-								<div> <b class="text-dark">주요 기능 : </b> 👤 회원 가입,  🔐 로그인, 🚪 로그아웃
-									 ,화상채팅, 룰북 추천, 룰북 구매, 결제<br>
-									<b class="text-dark">역할 : </b> 추천 알고리즘 연동, 구독권 및 룰북 장바구니, 결제 관련 기능 구현<br>
-								</div>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2022.06-2022.07</span>
-								<div class="d-flex">
-									<h2>yumyumcoffee</h2>
-									<!--<span class="position">Cambridge University</span>-->
-									<div>&nbsp;<a class="btn btn-outline-secondary" target="_blank"
-												  class="btn btn-outline-secondary"
-												  href="https://github.com/FinYoum/YumYumCoffee">Github</a>&nbsp;
-									</div>
+      <h4>그 외 구현</h4>
+      <ul class="compact">
+        <li>잔액 충전·차감, 결제 취소·환불, 중복 환불 방지, 예약 만료 처리</li>
+        <li>동시성 충돌·만료·중복 결제·잔액 부족 예외 처리와 JUnit 테스트, REST API 문서화</li>
+      </ul>
+    </article>
 
-								</div>
+    <!-- ───────────── streaming ───────────── -->
+    <article class="project">
+      <div class="project-head">
+        <h3>동영상 플랫폼 정산 · 통계 시스템</h3>
+        <p class="sub">동영상 플랫폼의 시청 데이터를 기반으로 통계와 영상·광고 정산을 처리하는 시스템</p>
+      </div>
+      <dl class="meta">
+        <dt>기간</dt><dd>2024.06 ~ 2024.07</dd>
+        <dt>인원</dt><dd>1인 · 항해99 취업 리부트 코스 3기</dd>
+        <dt>기술</dt><dd class="tags">
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Spring Batch</span><span class="tag">Spring Scheduler</span>
+          <span class="tag">JPA</span><span class="tag">MySQL</span><span class="tag">Docker</span>
+        </dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/kubistar/streaming" target="_blank" rel="noopener">kubistar/streaming ↗</a></dd>
+      </dl>
 
-								<!--<span class="position">Cambridge University</span>-->
-								<div> <b class="text-dark">기술 스택 : </b>Spring Boot, Java, JavaScript, Thymeleaf, OracleCloud
-								</div>
-								<div> <b class="text-dark">주요 기능 : </b> 👤 회원 가입,  🔐 로그인, 🚪 로그아웃
-									, 상품 리스트 확인, 상품 상세 정보 확인, 주문, 결제<br>
-									<b class="text-dark">역할 : </b> 장바구니, 결제 관련 기능 구현<br>
-								</div>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2020.03-2020.11</span>
+      <h4>문제 해결</h4>
+      <details class="case" open>
+        <summary><span class="t">배치 작업이 API 서버 자원을 잠식</span><span class="r">API·배치 분리</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>정산 배치가 돌 때 API 응답에 영향</dd>
+          <dt>원인</dt><dd>API 서버와 배치가 같은 환경에서 실행되어 배치의 CPU·메모리 사용이 API와 경쟁</dd>
+          <dt>해결</dt><dd>Docker 컨테이너를 API와 배치로 분리하고 Spring Profile로 실행 대상을 구분</dd>
+          <dt class="res">결과</dt><dd>배치 실행이 API 서버 자원에 영향을 주지 않도록 격리</dd>
+        </dl>
+      </details>
+      <details class="case">
+        <summary><span class="t">본인 시청·반복 요청으로 조회수와 정산 금액이 부풀려짐</span><span class="r">어뷰징 조회 차단</span></summary>
+        <dl class="body">
+          <dt>문제</dt><dd>게시자 본인 시청과 짧은 시간 내 반복 요청이 조회수·광고 시청 횟수에 포함되어 정산 금액이 왜곡</dd>
+          <dt>해결</dt><dd>게시자 본인 시청은 집계에서 제외하고, 동일 Source(IP, 인증키)에서 30초 이내 들어온 요청은 중복으로 판정</dd>
+          <dt class="res">결과</dt><dd>정산 기준이 되는 조회수의 신뢰성 확보</dd>
+        </dl>
+      </details>
 
-								<div class="d-flex">
-									<h2>슈스팅</h2>
-									<div>&nbsp;<a class="btn btn-outline-secondary" target="_blank"
-												  class="btn btn-outline-secondary"
-												  href="https://github.com/kubistar/Shoosting">Github</a>&nbsp;
-										<a
-												class="btn btn-outline-secondary" target="_blank"
-												href="https://youtu.be/-4l0QEA118g?si=MY_rgqLhgaH9NaYT">시연영상</a>
-									</div>
+      <h4>그 외 구현</h4>
+      <ul class="compact">
+        <li>1일 / 1주 / 1개월 기준 조회수·재생 시간 TOP5 집계</li>
+        <li>영상·광고 조회수 기반 정산 금액 계산과 일 단위 누적 정산 데이터 생성</li>
+        <li>JWT 로그인, 사용자·판매자 권한 분리, 동영상 재생·이어보기 API</li>
+      </ul>
+    </article>
+  </div>
+</section>
 
-								</div>
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="section-desc">프로젝트에서 직접 사용한 기술입니다.</p>
+    <dl class="skills">
+      <dt>Backend</dt>
+      <dd>Java, Spring Boot, Spring Batch, JPA, JUnit — 정산·통계 배치, 동시성 제어, 트랜잭션 설계</dd>
+      <dt>Data</dt>
+      <dd>MySQL, Redis(ElastiCache) — 캐시 장애 대응, 분산 락, INCR·HyperLogLog 실시간 통계<br>Athena, DuckDB — 클릭 로그 집계</dd>
+      <dt>Cloud · Infra</dt>
+      <dd>AWS(EKS, ECR, S3, Firehose, CloudFront, RDS), Kubernetes(EKS·kubeadm), Docker, Terraform</dd>
+      <dt>CI/CD · 운영</dt>
+      <dd>GitHub Actions, ArgoCD, Kustomize, GitLab CI, Fluent Bit, SeaweedFS, k6 부하 테스트</dd>
+    </dl>
+  </div>
+</section>
 
-								<span class="position">졸업작품</span>
-								<div> <b class="text-dark">기술 스택 : </b>C#,Unity
-								</div>
-								<div> <b class="text-dark">주요 기능 : </b> 스도쿠, 슈팅<br>
-									<b class="text-dark">역할 : </b> 슈팅게임 관련 기능<br>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <ol class="timeline">
+      <li><span class="when">2026.06 ~ 2026.11</span>
+        <div class="what"><b>멋쟁이사자처럼 클라우드 커리어의 시작: AWS DevOps 엔지니어 7기</b>
+        <span>AWS·Terraform 실습, kubeadm으로 Kubernetes 클러스터 직접 구성, GitLab CI/CD 파이프라인 구축</span></div></li>
+      <li><span class="when">2026.09</span>
+        <div class="what"><b>GaeChwiPpo JPA 딥다이브 챌린지</b><span>매주 JPA 심화 미션 수행 후 PR 제출</span></div></li>
+      <li><span class="when">2025.05 ~ 2025.07</span>
+        <div class="what"><b>항해 Lite 백엔드 코스 1기</b></div></li>
+      <li><span class="when">2024.05 ~ 2024.08</span>
+        <div class="what"><b>항해99 취업 리부트 코스 3기</b></div></li>
+      <li><span class="when">2023.02 ~ 2023.08</span>
+        <div class="what"><b>한국소프트웨어인재개발원(KOSMO) 풀스택 인재양성과정</b></div></li>
+      <li><span class="when">2017.03 ~ 2021.02</span>
+        <div class="what"><b>대구한의대학교 스마트IT 전공</b></div></li>
+    </ol>
+  </div>
+</section>
+</main>
 
-
-	<!-- 사이드 프로젝트-->
-<!--
-	<section class="ftco-section ftco-project">
-		<div class="container-fluid px-md-0">
-			<div class="row no-gutters justify-content-center pb-5">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Projects</h1>
-					<h2 id="side-projects-section" class="mb-4">Side Projects</h2>
-					<p>꾸준히 사이드 프로젝트를 진행하며, 다양한 분야의 기술 스택을 경험해왔습니다.</p>
-				</div>
-			</div>
-			<div class="row no-gutters">
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/side-project-1.png);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a target="_blank" href="https://qpi.kr/"> QPI - 소개팅 서비스 소개 페이지 개발</a></h3>
-							<span>UI/UX 디자인부터 웹 호스팅까지 전체 영역을 담당하였습니다.</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-2.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-3.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-4.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-5.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-6.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
--->
-
-	<!-- blog  -->
-	<!--<section class="ftco-section" id="blog-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-5">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Blog</h1>
-					<h2 class="mb-4">My Blog</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-				</div>
-			</div>
-			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
-							</h3>
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">Sept. 12, 2019</span>
-									<a href="#" class="mr-2">Admin</a>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<p>A small river named Duden flows by their place and supplies it with the necessary
-								regelialia.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
-							</h3>
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">Sept. 12, 2019</span>
-									<a href="#" class="mr-2">Admin</a>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<p>A small river named Duden flows by their place and supplies it with the necessary
-								regelialia.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry">
-						<a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
-							</h3>
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">Sept. 12, 2019</span>
-									<a href="#" class="mr-2">Admin</a>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<p>A small river named Duden flows by their place and supplies it with the necessary
-								regelialia.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>-->
-
-	<section class="ftco-section ftco-hireme img" style="background-image: url(images/bg_1.jpg)">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-7 ftco-animate text-center">
-					<h2>함께할 <span>회사를 찾는 중</span> 입니다.</h2>
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					<p class="mb-0"><a href="#" class="btn btn-primary py-3 px-5">연락주세요.</a></p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Contact</h1>
-					<h2 class="mb-4">Contact Me</h2>
-					<p>회사와 함께 성장하는 개발자가 되겠습니다. 연락주세요.</p>
-				</div>
-			</div>
-
-			<div class="row d-flex contact-info mb-5">
-				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box text-center p-4 shadow">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-map-signs"></span>
-						</div>
-						<div>
-							<h3 class="mb-4">Address</h3>
-							<p>서울특별시 강남구 역삼동</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box text-center p-4 shadow">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-phone2"></span>
-						</div>
-						<div>
-							<h3 class="mb-4">Contact Number</h3>
-							<p><a href="tel://1234567920">+ 010-2076-6301</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box text-center p-4 shadow">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-paper-plane"></span>
-						</div>
-						<div>
-							<h3 class="mb-4">Email Address</h3>
-							<p><a href="mailto:info@yoursite.com">seungmi6301@naver.com</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box text-center p-4 shadow">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-globe"></span>
-						</div>
-						<div>
-							<h3 class="mb-4">Website</h3>
-							<p><a href="#">yoursite.com</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-
-	<footer class="ftco-footer ftco-section">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<p>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script> All rights reserved | This template
-						is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-
-
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-				stroke="#F96D00" />
-		</svg></div>
-
-
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
-
-	<script src="js/main.js"></script>
+<footer id="contact">
+  <div class="wrap">
+    <p style="margin:0 0 6px; color:var(--text-2)">
+      <a href="https://github.com/kubistar" target="_blank" rel="noopener">github.com/kubistar</a> ·
+      <a href="mailto:seungmi6301@naver.com">seungmi6301@naver.com</a>
+    </p>
+    © 유승미
+  </div>
+</footer>
 
 </body>
-
 </html>
